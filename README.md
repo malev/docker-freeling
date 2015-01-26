@@ -24,7 +24,14 @@ Asking for the senses of the tagged words:
 
     docker run -it --rm malev/freeling analyzer -f $FREELINGSHARE/config/freeling/analyzer.cfg --server --port 50005 --inpf plain --outf sense --sense all
 
-With `neca analysis:
+With `nec` analysis:
 
     docker run -it --rm malev/freeling analyzer -f $FREELINGSHARE/config/freeling/analyzer.cfg --server --port 50005 --inpf plain --outf tagged --nec --noflush
-    FREELINGSHARE=/usr/local/share/freeling/ analyzer \
+
+## Connect
+
+Get the IP of your Graphite container:
+
+    docker inspect --format '{{.NetworkSettings.IPAddress}}' malev/freeling
+
+And start playing with your client.
