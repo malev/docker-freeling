@@ -20,4 +20,5 @@ RUN make install
 RUN rm -rf /tmp/freeling-3.1
 
 EXPOSE 50005
+ENV FREELINGSHARE /usr/local/share/freeling
 CMD echo 'Hello world' | analyze -f $FREELINGSHARE/config/en.cfg | grep -c 'world world NN 1'
