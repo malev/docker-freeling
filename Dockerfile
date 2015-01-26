@@ -10,7 +10,7 @@ RUN apt-get install -y build-essential libicu-dev libboost1.54-all-dev\
 
 WORKDIR /tmp
 RUN wget https://s3.amazonaws.com/src.codingnews.info/freeling-3.1.tar.gz
-RUN tar xvzf freeling-3.1
+RUN tar xvzf freeling-3.1.tar.gz
 ADD automake_options.am /tmp/freeling-3.1/src/
 WORKDIR /tmp/freeling-3.1
 RUN aclocal; libtoolize; autoconf; automake -a
