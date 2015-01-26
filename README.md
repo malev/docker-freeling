@@ -8,25 +8,29 @@ FreeLing is designed to be used as an external library from any application requ
 
 ## Usage
 
-This installation is meat to use the client/server mode. There are different configurations that you can use and they are going to influence in the analysis performed.
+This installation is meat to use the client/server mode. There are different configurations that you can use and they are going to influence in the analysis performed. You will need to define the environmental variable `FREELINGSHARE`:
+
+    export FREELINGSHARE=/usr/local/share/freeling
 
 ### Running freeling as a server:
 
 Performing morphological analysis:
 
-    docker run -it --rm malev/freeling analyzer -f $FREELINGSHARE/config/freeling/analyzer.cfg --server --port 50005 --inpf plain --outf morfo
+    docker run -it --rm -p 50005:50005 malev/freeling analyzer -f $FREELINGSHARE/config/en.cfg --server --port 50005 --inpf plain --outf morfo
 
 Performing morphological with PoS tagging:
 
-    docker run -it --rm malev/freeling analyzer -f $FREELINGSHARE/config/freeling/analyzer.cfg --server --port 50005 --inpf plain --outf tagged
+    docker run -it --rm -p 50005:50005 malev/freeling analyzer -f $FREELINGSHARE/config/freeling/analyzer.cfg --server --port 50005 --inpf plain --outf tagged
 
 Asking for the senses of the tagged words:
 
-    docker run -it --rm malev/freeling analyzer -f $FREELINGSHARE/config/freeling/analyzer.cfg --server --port 50005 --inpf plain --outf sense --sense all
+    docker run -it --rm -p 50005:50005 malev/freeling analyzer -f $FREELINGSHARE/config/freeling/analyzer.cfg --server --port 50005 --inpf plain --outf sense --sense all
 
 With `nec` analysis:
 
-    docker run -it --rm malev/freeling analyzer -f $FREELINGSHARE/config/freeling/analyzer.cfg --server --port 50005 --inpf plain --outf tagged --nec --noflush
+    docker run -it --rm -p 50005:50005 malev/freeling analyzer -f $FREELINGSHARE/config/freeling/analyzer.cfg --server --port 50005 --inpf plain --outf tagged --nec --noflush
+
+You can also switch the options `-it --rm` with `-d` to make your containers work on the background.
 
 ## Connect
 
